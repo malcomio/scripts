@@ -26,12 +26,17 @@ gsed -E -i.bak 's/\/(.*).pdf/\/%.pdf/g' output.csv
 
 echo "Replacing tracked return IDs with % signs"
 gsed -E -i.bak 's/track-my-return\/create\/(.*)"/track-my-return\/create\/%"/g' output.csv
+gsed -E -i.bak 's/pick-a-retailer&(.*)"/pick-a-retailer"/g' output.csv
 
 echo "Replacing search terms with % signs"
 gsed -E -i.bak 's/search\/bing_cs_api\/(.*)"/search\/bing_cs_api\/%"/g' output.csv
 
 echo "Replacing autocomplete terms with % signs"
 gsed -E -i.bak 's/autocomplete\/%\/(.*)"/autocomplete\/%\/%"/g' output.csv
+
+echo "Replacing payment IDs with % signs"
+gsed -E -i.bak 's/setup\/%\/(.*)"/setup\/%\/%"/g' output.csv
+gsed -E -i.bak 's/return\/%\/(.*)"/return\/%\/%"/g' output.csv
 
 echo "Converting to lower case"
 tr '[:upper:]' '[:lower:]' < output.csv > output-1.csv
